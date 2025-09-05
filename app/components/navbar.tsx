@@ -20,11 +20,11 @@ const Navbar: React.FC<NavbarProps> = ({ scrollToSection }) => {
 
     const { isDark, toggleTheme, themeClasses } = useTheme()
     return (
-        <nav className={`${themeClasses.headerBg} sticky top-0 z-10 border-b ${themeClasses.border} backdrop-blur-md backdrop-opacity-100`}>
+        <nav className={`${themeClasses.headerBg} fixed top-5 z-10 border-b rounded-xl shadow-xl/30 px-4 left-1/2 transform -translate-x-1/2 ${themeClasses.border} backdrop-blur-md backdrop-opacity-100`}>
             <div className="max-w-5xl mx-auto px-4">
                 <div className="flex items-center justify-between h-16">
-                    <span className={`text-2xl ${themeClasses.text} font-semibold`}>&gt;Arhant&#95;</span>
-                    <div className={`flex space-x-4`}>
+                    <span className={`text-2xl mr-20 ${themeClasses.text} font-semibold`}>&gt;Arhant&#95;</span>
+                    <div className={`flex space-x-8`}>
                         <a href="https://github.com/arhantsg07" target="_blank">
                         <svg
                             className="w-6 h-8"

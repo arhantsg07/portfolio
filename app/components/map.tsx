@@ -5,7 +5,7 @@ import { useTheme } from "../context/themeContext";
 function Map() {
     const { themeClasses } = useTheme();
     return (
-        <section className="py-1 px-6">
+        <section className="pt-30 px-6">
             <div className="container mx-auto text-center">
                 <div className="mb-8">
                     <div className="flex flex-col items-center gap-8 justify-center text-3xl text-white font-['IBM_Plex_Mono'] mb-20">
