@@ -23,7 +23,7 @@ const Introduction: React.FC = () => {
                     to architecting complex backend systems and databases.
                     </p>
                     <p className="mt-4">
-                    Apart from coding, my hobbies include reading and painting. When I'm not coding, you'll find me exploring and reading about new technology, science
+                    Apart from coding, my hobbies include reading and painting. When I&apos;m not coding, you&apos;ll find me exploring and reading about new technology, science
                     or sometimes sketching.
                     </p>
                 </div>
