@@ -6,10 +6,10 @@ import Projects from "./components/projects";
 import SkillSet from "./components/skills";
 import Contact from "./components/contact";
 import TerminalIntro from "./components/terminalAnimation"
-import { AnimatePresence, motion } from "motion/react";
 import { ThemeProvider } from "./context/themeContext";
 import Footer from "./components/footer";
-import { motion as m } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import type { Variants } from "framer-motion";
 
 type SectionRefs = {
   [key: string]: React.RefObject<HTMLElement | null>;
@@ -33,7 +33,7 @@ export default function Home() {
       window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
-  const sectionVariants = {
+  const sectionVariants: Variants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
@@ -79,7 +79,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
             >
-              <m.section
+              <motion.section
                 id="introduction"
                 ref={sectionRefs.introduction}
                 initial="hidden"
@@ -89,8 +89,8 @@ export default function Home() {
                 variants={ sectionVariants }
               >
                 <Introduction />
-              </m.section>
-              <m.section
+              </motion.section>
+              <motion.section
                 id="skills"
                 ref={sectionRefs.skills}
                 initial="hidden"
@@ -99,8 +99,8 @@ export default function Home() {
                 variants={ sectionVariants }
               >
                 <SkillSet />
-              </m.section>
-              <m.section
+              </motion.section>
+              <motion.section
                 id="projects"
                 ref={sectionRefs.projects}
                 initial="hidden"
@@ -110,8 +110,8 @@ export default function Home() {
 
               >
                 <Projects />
-              </m.section>
-              <m.section
+              </motion.section>
+              <motion.section
                 id="contact"
                 ref={sectionRefs.contact}
                 initial="hidden"
@@ -120,7 +120,7 @@ export default function Home() {
                 variants={ sectionVariants }
               >
                 <Contact />
-              </m.section>
+              </motion.section>
               <Footer />
             </motion.div>
           )}
