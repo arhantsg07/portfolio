@@ -2,8 +2,7 @@
 import React from "react";
 import { useTheme } from "../context/themeContext";
 import { Sun, Moon } from 'lucide-react';
-import { motion, vh } from "framer-motion";
-import Image from "next/image";
+import { motion } from "framer-motion";
 
 interface NavbarProps {
     scrollToSection: (sectionId: string) => void;
