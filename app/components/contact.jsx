@@ -1,4 +1,5 @@
 import { Mail } from "lucide-react";
+import { FaXTwitter } from 'react-icons/fa6';
 import { useTheme } from "../context/themeContext";
 
 function Contact() {
@@ -22,6 +23,15 @@ function Contact() {
           >
             <Mail className="w-5 h-5" />
             <span>sfarhant098@gmail.com</span>
+          </a>
+          <a
+            href="https://x.com/s_arhant"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors"
+          >
+            <FaXTwitter className="w-5 h-5" />
+            <span>@s_arhant</span>
           </a>
         </div>
 
