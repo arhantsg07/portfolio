@@ -1,22 +1,22 @@
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
-
 interface ThemeContextType {
-    isDark: boolean;
-    toggleTheme: () => void;
-    themeClasses: {
-        bg: string;
-        textHolder: string,
-        text: string;
-        skillText: string,
-        headerBg: string;
-        cardBg: string;
-        projectCardBg: string;
-        sectionBg: string;
-        textSecondary: string;
-        textMuted: string;
-        border: string;
-        hoverBg: string;
-    };
+  isDark: boolean;
+  toggleTheme: () => void;
+  themeClasses: {
+    bg: string;
+    logo: string;
+    textHolder: string,
+    text: string;
+    skillText: string,
+    headerBg: string;
+    cardBg: string;
+    projectCardBg: string;
+    sectionBg: string;
+    textSecondary: string;
+    textMuted: string;
+    border: string;
+    hoverBg: string;
+  };
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -41,21 +41,22 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   };
 
   useEffect(() => {
-  if (isDark) {
-    document.body.classList.add('dark');
-    document.body.classList.remove('light');
-  } else {
-    document.body.classList.add('light');
-    document.body.classList.remove('dark');
-  }
-}, [isDark]);
+    if (isDark) {
+      document.body.classList.add('dark');
+      document.body.classList.remove('light');
+    } else {
+      document.body.classList.add('light');
+      document.body.classList.remove('dark');
+    }
+  }, [isDark]);
 
   const themeClasses = {
-    bg: isDark ? 'bg-gray-900' : 'bg-[#f5eded]',
+    bg: isDark ? 'bg-[#0a0a0a]' : 'bg-[#f5eded]',
+    logo: isDark ? './images/Title_light.png' : './images/Title.png',
     text: isDark ? 'text-white' : 'text-gray-900',
     textHolder: isDark ? 'bg-[#f5eded]' : 'bg-[#383838]',
     skillText: isDark ? 'text-gray-900' : 'text-white',
-    headerBg: isDark ? 'bg-gray-800' : 'bg-white-100',
+    headerBg: isDark ? 'bg-[#000000]' : 'bg-white-100',
     cardBg: isDark ? 'bg-gray-50' : 'bg-gray-800',
     projectCardBg: isDark ? 'bg-white' : 'bg-gray-800',
     sectionBg: isDark ? 'bg-gray-800' : 'bg-gray-50',
@@ -67,7 +68,9 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 
   return (
     <ThemeContext.Provider value={{ isDark, toggleTheme, themeClasses }}>
-      {children}
+      <div className={`${themeClasses.bg}`}>
+        {children}
+      </div>
     </ThemeContext.Provider>
   );
 };
