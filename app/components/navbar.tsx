@@ -19,12 +19,30 @@ const Navbar: React.FC<NavbarProps> = ({ scrollToSection }) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const { isDark, toggleTheme, themeClasses } = useTheme();
 
+    // ── same as desktop ──
     const linkVariants = {
         hover: {
             scale: 1.1,
             color: "#cccccc",
             transition: { duration: 0.3 },
         },
+    };
+
+    // ── stagger container for mobile links ──
+    const mobileMenuVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.08,
+            },
+        },
+    };
+
+    // ── each mobile link slides in from left ──
+    const mobileLinkVariants = {
+        hidden: { opacity: 0, x: -16 },
+        visible: { opacity: 1, x: 0, transition: { duration: 0.25 } },
     };
 
     const handleNav = (id: string) => {
@@ -94,16 +112,37 @@ const Navbar: React.FC<NavbarProps> = ({ scrollToSection }) => {
                             )}
                         </button>
 
-                        <button
+                        {/* Animated hamburger / close icon */}
+                        <motion.button
                             onClick={() => setMenuOpen(prev => !prev)}
                             className={`p-2 rounded-lg ${themeClasses.hoverBg} transition-colors`}
                             aria-label="Toggle menu"
+                            whileTap={{ scale: 0.85 }}
                         >
-                            {menuOpen
-                                ? <X    className={`w-5 h-5 ${themeClasses.text}`} />
-                                : <Menu className={`w-5 h-5 ${themeClasses.text}`} />
-                            }
-                        </button>
+                            <AnimatePresence mode="wait" initial={false}>
+                                {menuOpen ? (
+                                    <motion.div
+                                        key="close"
+                                        initial={{ rotate: -90, opacity: 0 }}
+                                        animate={{ rotate: 0,   opacity: 1 }}
+                                        exit={{   rotate:  90, opacity: 0 }}
+                                        transition={{ duration: 0.2 }}
+                                    >
+                                        <X className={`w-5 h-5 ${themeClasses.text}`} />
+                                    </motion.div>
+                                ) : (
+                                    <motion.div
+                                        key="menu"
+                                        initial={{ rotate:  90, opacity: 0 }}
+                                        animate={{ rotate: 0,   opacity: 1 }}
+                                        exit={{   rotate: -90, opacity: 0 }}
+                                        transition={{ duration: 0.2 }}
+                                    >
+                                        <Menu className={`w-5 h-5 ${themeClasses.text}`} />
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </motion.button>
                     </div>
 
                 </div>
@@ -119,10 +158,18 @@ const Navbar: React.FC<NavbarProps> = ({ scrollToSection }) => {
                         transition={{ duration: 0.25 }}
                         className={`md:hidden border-t ${themeClasses.border} ${themeClasses.headerBg} overflow-hidden`}
                     >
-                        <div className="flex flex-col px-6 py-4 gap-4">
-
+                        {/* Staggered links container */}
+                        <motion.div
+                            variants={mobileMenuVariants}
+                            initial="hidden"
+                            animate="visible"
+                            className="flex flex-col px-6 py-4 gap-4"
+                        >
                             {/* GitHub */}
-                            <a
+                            <motion.a
+                                variants={mobileLinkVariants}
+                                whileHover={{ scale: 1.05, color: "#cccccc" }}
+                                whileTap={{ scale: 0.95, opacity: 0.7 }}
                                 href="https://github.com/arhantsg07"
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -130,19 +177,22 @@ const Navbar: React.FC<NavbarProps> = ({ scrollToSection }) => {
                                 onClick={() => setMenuOpen(false)}
                             >
                                 GitHub ↗
-                            </a>
+                            </motion.a>
 
                             {/* Nav Links */}
                             {navLinks.map(link => (
-                                <button
+                                <motion.button
                                     key={link.id}
+                                    variants={mobileLinkVariants}
+                                    whileHover={{ scale: 1.05, color: "#cccccc" }}
+                                    whileTap={{ scale: 0.95, opacity: 0.7 }}
                                     onClick={() => handleNav(link.id)}
-                                    className={`${themeClasses.text} text-sm text-left hover:opacity-70 transition-opacity`}
+                                    className={`${themeClasses.text} text-sm text-left`}
                                 >
                                     {link.label}
-                                </button>
+                                </motion.button>
                             ))}
-                        </div>
+                        </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>
