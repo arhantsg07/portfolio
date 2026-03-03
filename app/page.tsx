@@ -54,7 +54,6 @@ export default function Home() {
 
     return () => clearTimeout(timeout);
   }, []);
-
   return (
     <>
       <ThemeProvider>

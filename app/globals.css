@@ -1,6 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap'); 
-@import "tailwindcss"; 
-@import "tw-animate-css"; 
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@font-face {
+  font-family: 'IBMPlexSans';
+  src: url('/fonts/IBMPlexSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'HNF';
+  src: url('/fonts/HackNerdFont-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
 
 @custom-variant dark (&:is(.dark *));
 
@@ -53,11 +67,13 @@ body {
 }
 
 body.dark {
-  background: #111827; /* Dark background */
+  background: #111827;
+  /* Dark background */
 }
 
 body.light {
-  background: #f5eded; /* Light background */
+  background: #f5eded;
+  /* Light background */
 }
 
 :root {
@@ -133,6 +149,7 @@ body.light {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
