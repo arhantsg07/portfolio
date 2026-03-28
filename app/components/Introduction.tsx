@@ -99,7 +99,7 @@ const Introduction: React.FC = () => {
 
                     <h1 className="mt-5 text-4xl leading-tight md:text-6xl">Arhant Gourkhede</h1>
                     <p className={`mt-3 max-w-2xl text-base leading-relaxed md:text-lg ${themeClasses.textSecondary}`}>
-                        Everything I know, I learned by building it; Anything I don't, I am ready to put in effort. That's what works for me.
+                        Everything I know, I learned by building it; Anything I don&apos;t, I am ready to put in effort. That&apos;s what works for me.
                         {/* I build with a quiet-first mindset: simple architecture,
             clear user journeys, and performant. */}
                     </p>
