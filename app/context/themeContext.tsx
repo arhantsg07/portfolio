@@ -51,19 +51,19 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   }, [isDark]);
 
   const themeClasses = {
-    bg: isDark ? 'bg-[#0a0a0a]' : 'bg-[#f5eded]',
+    bg: isDark ? 'bg-[#131917]' : 'bg-[#f5f4ef]',
     logo: isDark ? './images/Title_light.png' : './images/Title.png',
-    text: isDark ? 'text-white' : 'text-gray-900',
-    textHolder: isDark ? 'bg-[#f5eded]' : 'bg-[#383838]',
-    skillText: isDark ? 'text-gray-900' : 'text-white',
-    headerBg: isDark ? 'bg-[#000000]' : 'bg-white-100',
-    cardBg: isDark ? 'bg-gray-50' : 'bg-gray-800',
-    projectCardBg: isDark ? 'bg-white' : 'bg-gray-800',
-    sectionBg: isDark ? 'bg-gray-800' : 'bg-gray-50',
-    textSecondary: isDark ? 'text-gray-300' : 'text-gray-600',
-    textMuted: isDark ? 'text-gray-400' : 'text-gray-500',
-    border: isDark ? 'border-gray-700' : 'border-gray-300',
-    hoverBg: isDark ? 'hover:bg-gray-700' : 'hover:bg-gray-100'
+    text: isDark ? 'text-stone-100' : 'text-stone-800',
+    textHolder: isDark ? 'bg-stone-800/75' : 'bg-stone-100/90',
+    skillText: isDark ? 'text-stone-200' : 'text-stone-700',
+    headerBg: isDark ? 'bg-[#131917]/80' : 'bg-[#f6f5ef]/75',
+    cardBg: isDark ? 'bg-stone-800/70' : 'bg-stone-50/80',
+    projectCardBg: isDark ? 'bg-stone-900/60' : 'bg-stone-50/80',
+    sectionBg: isDark ? 'bg-stone-900/40' : 'bg-stone-50/70',
+    textSecondary: isDark ? 'text-stone-300' : 'text-stone-600',
+    textMuted: isDark ? 'text-stone-400' : 'text-stone-500',
+    border: isDark ? 'border-stone-700/70' : 'border-stone-300/80',
+    hoverBg: isDark ? 'hover:bg-stone-700/70' : 'hover:bg-stone-100/80'
   };
 
   return (

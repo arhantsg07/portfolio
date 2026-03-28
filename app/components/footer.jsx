@@ -4,17 +4,13 @@ import ServerTime from "./serverTime";
 export default function Footer() {
   const { themeClasses } = useTheme();
   return (
-    <footer
-      className={`${themeClasses.bg} py-8 px-6 border-t ${themeClasses.border} transition-colors duration-300`}
-    >
-      <div
-        className={`container mx-auto text-center ${themeClasses.textMuted}`}
-      >
-        <p>
-          &copy; 2026 Arhant Gourkhede. All rights reserved.
+    <footer className="zen-shell py-8">
+      <div className={`rounded-2xl border px-5 py-6 text-center transition-colors duration-300 ${themeClasses.cardBg} ${themeClasses.border}`}>
+        <p className={`${themeClasses.textMuted} text-sm`}>
+          &copy; 2026 Arhant Gourkhede. Built as a digital garden.
         </p>
-        <div className="flex justify-center">
-        <ServerTime />
+        <div className="mt-3 flex justify-center">
+          <ServerTime />
         </div>
       </div>
     </footer>
