@@ -51,7 +51,7 @@ const ServerTime = () => {
       </span>
 
       {/* Divider */}
-      <span className="text-gray-600 text-xs">|</span>
+      <span className="text-stone-500 text-xs">|</span>
 
       {/* Time */}
       <span className={ `${themeClasses.textSecondary} text-sm font-semibold tracking-widest`}>
@@ -59,7 +59,7 @@ const ServerTime = () => {
       </span>
 
       {/* Divider */}
-      <span className="text-gray-600 text-xs">|</span>
+      <span className="text-stone-500 text-xs">|</span>
 
       {/* Timezone */}
       <span className={`${themeClasses.textSecondary} text-xs`}>
