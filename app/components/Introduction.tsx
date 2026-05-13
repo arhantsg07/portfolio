@@ -114,7 +114,7 @@ const Introduction: React.FC = () => {
 
                     <div className="mt-7 flex flex-wrap gap-3">
                         <a
-                            href="https://drive.google.com/file/d/1cHMm75EG3YRYCy0P5_4j-6urQ6N039sL/view?usp=drivesdk"
+                            href={process.env.NEXT_PUBLIC_DRIVE_LINK}
                             className="rounded-full border border-stone-800/80 bg-stone-800 px-5 py-2 text-sm font-semibold tracking-wide text-stone-100 transition-colors hover:bg-stone-700 dark:border-stone-200/80 dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-stone-200"
                         >
                             Resume / CV
