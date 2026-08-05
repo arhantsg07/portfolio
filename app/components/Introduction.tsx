@@ -97,19 +97,21 @@ const Introduction: React.FC = () => {
                         <span className="zen-chip">Calm Systems</span>
                     </div>
 
-                    <h1 className="mt-5 text-4xl leading-tight md:text-6xl">Arhant Gourkhede</h1>
-                    <p className={`mt-3 max-w-2xl text-base leading-relaxed md:text-lg ${themeClasses.textSecondary}`}>
-                        Everything I know, I learned by building it; Anything I don&apos;t, I am ready to put in effort. That&apos;s what works for me.
-                        {/* I build with a quiet-first mindset: simple architecture,
-            clear user journeys, and performant. */}
-                    </p>
+                    <div className="mt-6 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                        <div className="max-w-2xl">
+                            <h1 className="text-4xl leading-tight md:text-6xl">Arhant Gourkhede</h1>
+                            <p className={`mt-3 text-base leading-relaxed md:text-lg ${themeClasses.textSecondary}`}>
+                                I build with patience, clarity, and a deep respect for solving the right problem well.
+                            </p>
+                        </div>
 
-                    <div className="mt-5 flex max-w-3xl flex-wrap gap-2">
-                        {tools.map((item) => (
-                            <span key={item} className="zen-chip">
-                                {item}
-                            </span>
-                        ))}
+                        <div className="flex flex-wrap gap-2">
+                            {tools.map((item) => (
+                                <span key={item} className="zen-chip">
+                                    {item}
+                                </span>
+                            ))}
+                        </div>
                     </div>
 
                     <div className="mt-7 flex flex-wrap gap-3">
@@ -146,58 +148,34 @@ const Introduction: React.FC = () => {
                             <span>GitHub Contributions</span>
                             <span>{loading ? "loading..." : `${contrib.total} last year`}</span>
                         </div>
-                        {/* <div className="grid grid-rows-7 grid-flow-col gap-[3px]">
-                            {contrib.cells.length > 0 ? (
-                                contrib.cells.map((cell) => (
-                                    <div
-                                        key={cell.date}
-                                        title={`${cell.date}: ${cell.count} contribution${cell.count !== 1 ? "s" : ""}`}
-                                        className={`aspect-square rounded-[2px] sm:h-3 sm:w-3 ${intensityClass(cell.level, isDark)} cursor-help transition-opacity hover:opacity-80`}
-                                    />
-                                ))
-                            ) : (
-                                <span className={`text-xs ${themeClasses.textSecondary}`}>No data yet</span>
-                            )}
-                        </div> */}
-                        <div className="flex flex-col gap-1">
-                            {/* Month labels */}
-                            {/* <div className="flex" style={{ marginLeft: "28px" }}>
-                                {weeks.map((week, weekIdx) => {
-                                    const label = monthLabels.find((m) => m.weekIdx === weekIdx);
-                                    return (
-                                        <div key={weekIdx} className="w-3 text-[9px] text-gray-400" style={{ minWidth: "15px" }}>
-                                            {label ? label.label : ""}
-                                        </div>
-                                    );
-                                })}
-                            </div> */}
 
-                            {/* Day labels + Grid */}
-                            <div className="flex gap-1">
-                                {/* Day labels */}
-                                <div className="flex flex-col gap-[3px]">
+                        <div className="flex flex-col gap-2">
+                            <div className="flex gap-2">
+                                <div className="flex flex-col gap-[3px] pt-[1px]">
                                     {DAYS.map((day, i) => (
-                                        <div key={day} className={`h-3 text-[9px] leading-3 text-gray-400 ${i % 2 === 0 ? "opacity-0" : ""}`}>
+                                        <div key={day} className={`h-3 text-[9px] leading-3 text-stone-400 ${i % 2 === 0 ? "opacity-0" : ""}`}>
                                             {day}
                                         </div>
                                     ))}
                                 </div>
 
-                                {/* Contribution cells */}
                                 <div className="grid grid-rows-7 grid-flow-col gap-[3px]">
-                                    {contrib.cells.map((cell) => (
-                                        <div
-                                            key={cell.date}
-                                            title={`${cell.date}: ${cell.count} contribution${cell.count !== 1 ? "s" : ""}`}
-                                            className={`h-3 w-3 rounded-[2px] ${intensityClass(cell.level, isDark)} cursor-help transition-opacity hover:opacity-80`}
-                                        />
-                                    ))}
+                                    {contrib.cells.length > 0 ? (
+                                        contrib.cells.map((cell) => (
+                                            <div
+                                                key={cell.date}
+                                                title={`${cell.date}: ${cell.count} contribution${cell.count !== 1 ? "s" : ""}`}
+                                                className={`h-3 w-3 rounded-[2px] ${intensityClass(cell.level, isDark)} cursor-help transition-opacity hover:opacity-80`}
+                                            />
+                                        ))
+                                    ) : (
+                                        <span className={`text-xs ${themeClasses.textSecondary}`}>No data yet</span>
+                                    )}
                                 </div>
                             </div>
 
-                            {/* Footer */}
-                            <div className={`flex items-center justify-between text-[10px] ${themeClasses.textSecondary} mt-1`}>
-                                <span>Total <strong>{contrib.total}</strong> contributions</span>
+                            <div className={`flex flex-wrap items-center justify-between gap-2 text-[10px] ${themeClasses.textSecondary}`}>
+                                <span>Recent cadence</span>
                                 <div className="flex items-center gap-1">
                                     <span>Less</span>
                                     {[0, 1, 2, 3, 4].map((level) => (
