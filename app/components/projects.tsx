@@ -22,12 +22,12 @@ function Projects() {
       image: "/images/IE.png",
     },
     {
-      title: "CrypDesc",
+      title: "ProxyPulse",
       description:
-        "A desktop crypto dashboard built in C and raylib, focused on lightweight interactions and system-level control.",
-      tech: ["C", "Raylib", "libcurl"],
-      github: "https://github.com/arhantsg07/raylib_crypdesc",
-      image: "/images/crypdesc.png",
+        "An API gateway with an actual control plane behind it, instead of a config file you have to SSH in to edit.",
+      tech: ["Typescript", "Node.js", "Next.js", "Docker", "PostgreSQL"],
+      github: "https://github.com/arhantsg07/ProxyPulse",
+      image: "/images/ProxyPulse.png",
     },
   ];
 
