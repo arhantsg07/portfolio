@@ -1,10 +1,8 @@
-'use client';
+"use client";
 
 import { useState, useEffect } from 'react';
-import { useTheme } from '../context/themeContext';
 
 const ServerTime = () => {
-  const { themeClasses } = useTheme();
   const [time, setTime] = useState<Date | null>(null);
   const [timezone, setTimezone] = useState<string>('');
 
@@ -46,7 +44,7 @@ const ServerTime = () => {
 
       {/* Date */}
       
-      <span className={`${themeClasses.textSecondary} text-xs`}>
+      <span className="theme-text-secondary text-xs">
         {dateFormatted}
       </span>
 
@@ -54,7 +52,7 @@ const ServerTime = () => {
       <span className="text-stone-500 text-xs">|</span>
 
       {/* Time */}
-      <span className={ `${themeClasses.textSecondary} text-sm font-semibold tracking-widest`}>
+      <span className="theme-text-secondary text-sm font-semibold tracking-widest">
         {timeFormatted}
       </span>
 
@@ -62,7 +60,7 @@ const ServerTime = () => {
       <span className="text-stone-500 text-xs">|</span>
 
       {/* Timezone */}
-      <span className={`${themeClasses.textSecondary} text-xs`}>
+      <span className="theme-text-secondary text-xs">
         {timezone}
       </span>
 

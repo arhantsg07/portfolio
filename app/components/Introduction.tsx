@@ -1,87 +1,29 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { useTheme } from "../context/themeContext";
 
 // const tools = ["Next.js", "TypeScript", "Node.js", "Python", "Go", "PostgreSQL"];
-const tools = ["TypeScript", "Python", "Go", "PostgreSQL"];
-
-const socialLinks = [
-    { label: "GitHub", href: "https://github.com/arhantsg07" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/arhant-gourkhede-9b3515285" },
-    { label: "X", href: "https://x.com/s_arhant" },
-    { label: "Email", href: "mailto:sfarhant098@gmail.com" },
-];
-
-
-interface ContributionCell {
-    date: string;
-    count: number;
-    level: number;
-}
-
-function intensityClass(level: number, isDark: boolean) {
-    if (level < 1) return isDark ? "bg-stone-800/40" : "bg-stone-200/55";
-    if (level < 2) return isDark ? "bg-emerald-900/55" : "bg-emerald-200/70";
-    if (level < 3) return isDark ? "bg-emerald-800/60" : "bg-emerald-300/80";
-    if (level < 5) return isDark ? "bg-emerald-700/70" : "bg-emerald-400/85";
-    return isDark ? "bg-emerald-600/80" : "bg-emerald-500/90";
-}
+const tools = ["TypeScript", "Python", "Go", "PostgreSQL", "Pandas", "Numpy", "PyTorch"];
 
 const Introduction: React.FC = () => {
-    const { isDark, themeClasses } = useTheme();
-    const [contrib, setContrib] = useState<{ total: number; cells: ContributionCell[] }>({
-        total: 0,
-        cells: [],
-    });
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        fetch("/api/github-contributions")
-            .then((r) => r.json())
-            .then((data) => {
-                setContrib(data);
-                setLoading(false);
-            })
-            .catch((err) => {
-                console.error("Failed to fetch contributions:", err);
-                setLoading(false);
-            });
-    }, []);
-
-    const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-
-    // Group cells into weeks (arrays of 7)
-    const weeks = [];
-    for (let i = 0; i < contrib.cells.length; i += 7) {
-        weeks.push(contrib.cells.slice(i, i + 7));
-    }
-
-    // Get month labels with their week index
-    const monthLabels: { label: string; weekIdx: number }[] = [];
-    weeks.forEach((week, weekIdx) => {
-        const month = new Date(week[0].date).toLocaleString("default", { month: "short" });
-        if (weekIdx === 0 || month !== monthLabels[monthLabels.length - 1]?.label) {
-            monthLabels.push({ label: month, weekIdx });
-        }
-    });
 
     return (
         <section className="zen-shell pt-28 pb-10 md:pt-32">
-            <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="zen-panel overflow-hidden"
-            >
+            <div className="zen-panel animate-reveal overflow-hidden">
                 <div className="relative h-36 md:h-52">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(180,208,191,0.35),transparent_50%),linear-gradient(145deg,#8ea498_0%,#6f8478_42%,#425048_100%)]" />
+                    <div className="absolute inset-0 hidden overflow-hidden md:block">
+                        <Image
+                            src="/images/terminal.png"
+                            alt="Linux terminal showing system information and active processes"
+                            fill
+                            sizes="100vw"
+                            className="object-cover object-center opacity-35 mix-blend-multiply"
+                        />
+                        <div className="absolute inset-0 bg-[linear-gradient(90deg,#71887c_0%,#71887c_28%,rgba(113,136,124,0.58)_52%,rgba(66,80,72,0.1)_100%)]" />
+                    </div>
                     <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(17,24,22,0.55),transparent_55%)]" />
                     <div className="absolute -bottom-11 left-7 h-24 w-24 overflow-hidden rounded-full border-4 border-stone-100 shadow-lg md:left-10 md:h-32 md:w-32 dark:border-stone-800">
                         <Image
-                            src={isDark ? "/images/Title_light.png" : "/images/Title.png"}
+                            src="/images/Title.png"
                             alt="Arhant profile"
                             fill
                             sizes="128px"
@@ -92,16 +34,18 @@ const Introduction: React.FC = () => {
 
                 <div className="px-6 pb-8 pt-16 md:px-10">
                     <div className="flex flex-wrap items-center gap-3">
-                        <span className="zen-chip">Zen Engineer</span>
-                        <span className="zen-chip">Digital Craft</span>
-                        <span className="zen-chip">Calm Systems</span>
+                        <span className="zen-chip">AI / Web Developer</span>
+                        <span className="zen-chip">SIH 2024 Finalist</span>
                     </div>
 
                     <div className="mt-6 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
                         <div className="max-w-2xl">
+                            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] theme-text-muted">
+                                Software engineer building useful systems
+                            </p>
                             <h1 className="text-4xl leading-tight md:text-6xl">Arhant Gourkhede</h1>
-                            <p className={`mt-3 text-base leading-relaxed md:text-lg ${themeClasses.textSecondary}`}>
-                                I build with patience, clarity, and a deep respect for solving the right problem well.
+                            <p className="mt-3 text-base leading-relaxed theme-text-secondary md:text-lg">
+                                I turn complex workflows into robust, dependable products across the stack.
                             </p>
                         </div>
 
@@ -129,65 +73,8 @@ const Introduction: React.FC = () => {
                         </a>
                     </div>
 
-                    <div className="mt-6 flex flex-wrap items-center gap-4 text-sm">
-                        {socialLinks.map((link) => (
-                            <a
-                                key={link.label}
-                                href={link.href}
-                                target={link.label === "Email" ? undefined : "_blank"}
-                                rel={link.label === "Email" ? undefined : "noopener noreferrer"}
-                                className="text-stone-600 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
-                            >
-                                {link.label}
-                            </a>
-                        ))}
-                    </div>
-
-                    <div className="mt-8 rounded-2xl border border-stone-300/80 bg-stone-100/70 p-4 dark:border-stone-700/70 dark:bg-stone-900/45">
-                        <div className="mb-3 flex items-center justify-between text-xs uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">
-                            <span>GitHub Contributions</span>
-                            <span>{loading ? "loading..." : `${contrib.total} last year`}</span>
-                        </div>
-
-                        <div className="flex flex-col gap-2">
-                            <div className="flex gap-2">
-                                <div className="flex flex-col gap-[3px] pt-[1px]">
-                                    {DAYS.map((day, i) => (
-                                        <div key={day} className={`h-3 text-[9px] leading-3 text-stone-400 ${i % 2 === 0 ? "opacity-0" : ""}`}>
-                                            {day}
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <div className="grid grid-rows-7 grid-flow-col gap-[3px]">
-                                    {contrib.cells.length > 0 ? (
-                                        contrib.cells.map((cell) => (
-                                            <div
-                                                key={cell.date}
-                                                title={`${cell.date}: ${cell.count} contribution${cell.count !== 1 ? "s" : ""}`}
-                                                className={`h-3 w-3 rounded-[2px] ${intensityClass(cell.level, isDark)} cursor-help transition-opacity hover:opacity-80`}
-                                            />
-                                        ))
-                                    ) : (
-                                        <span className={`text-xs ${themeClasses.textSecondary}`}>No data yet</span>
-                                    )}
-                                </div>
-                            </div>
-
-                            <div className={`flex flex-wrap items-center justify-between gap-2 text-[10px] ${themeClasses.textSecondary}`}>
-                                <span>Recent cadence</span>
-                                <div className="flex items-center gap-1">
-                                    <span>Less</span>
-                                    {[0, 1, 2, 3, 4].map((level) => (
-                                        <div key={level} className={`h-3 w-3 rounded-[2px] ${intensityClass(level, isDark)}`} />
-                                    ))}
-                                    <span>More</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-            </motion.div>
+            </div>
         </section>
     );
 };

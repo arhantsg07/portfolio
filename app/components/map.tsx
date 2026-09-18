@@ -1,8 +1,6 @@
 import { Avatar } from "@mui/material";
-import { useTheme } from "../context/themeContext";
 
 function Map() {
-    const { themeClasses } = useTheme();
     return (
         <section className="pt-30 px-6">
             <div className="container mx-auto text-center">
@@ -10,10 +8,10 @@ function Map() {
                     <div className="flex flex-col items-center gap-10 justify-center text-3xl text-white font-['IBMPlexSans'] mb-8">
                         <Avatar
                             alt="Profile_photo"
-                            src={`${themeClasses.logo}`}
+                            src="/images/Title.png"
                             sx={{ width: 200, height: 200 }}
                         />
-                        <div className={`${themeClasses.text}`}>Arhant Gourkhede</div>
+                        <div className="theme-text-primary">Arhant Gourkhede</div>
 
                         {/* <p className="text-xl text-gray-300 mb-6">Full Stack Developer</p> */}
                         {/* <div className="flex justify-center items-center space-x-4 text-gray-400">
