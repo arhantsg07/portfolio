@@ -1,15 +1,12 @@
 import { Mail } from "lucide-react";
 import { FaXTwitter } from "react-icons/fa6";
-import { useTheme } from "../context/themeContext";
 
 function Contact() {
-  const { themeClasses } = useTheme();
-
   return (
-    <section id="contact" className="zen-shell py-8 md:py-10">
+    <section className="zen-shell py-8 md:py-10">
       <div className="zen-panel p-6 md:p-10">
-        <h2 className="text-3xl md:text-4xl">Let us build something calm and meaningful</h2>
-        <p className={`mt-3 max-w-2xl text-sm leading-relaxed md:text-base ${themeClasses.textSecondary}`}>
+        <h2 className="text-3xl md:text-4xl">Let us build something meaningful</h2>
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed theme-text-secondary md:text-base">
           Open to internships, full-time opportunities, and project collaborations where thoughtful design and
           robust engineering both matter.
         </p>
@@ -43,8 +40,8 @@ function Contact() {
           </a>
         </div>
 
-        <div className={`mt-8 rounded-2xl border p-5 ${themeClasses.projectCardBg} ${themeClasses.border}`}>
-          <p className={`text-sm leading-relaxed ${themeClasses.textSecondary}`}>
+        <div className="project-card mt-8 rounded-2xl border p-5">
+          <p className="text-sm leading-relaxed theme-text-secondary">
             Currently debugging the gap between theory and production. Open to internships where I can ship real things, contribute to impactful projects.
           </p>
         </div>
