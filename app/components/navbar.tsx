@@ -39,8 +39,13 @@ const Navbar: React.FC = () => {
         visible: { opacity: 1, x: 0, transition: { duration: 0.25 } },
     };
 
-    const handleNav = () => {
+    const handleNav = (event: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+        event.preventDefault();
         setMenuOpen(false);
+        requestAnimationFrame(() => {
+            document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+            window.history.pushState(null, "", `#${id}`);
+        });
     };
 
     return (
@@ -67,7 +72,7 @@ const Navbar: React.FC = () => {
                                 variants={linkVariants}
                                 whileHover="hover"
                                 href={`#${link.id}`}
-                                onClick={handleNav}
+                                onClick={(event) => handleNav(event, link.id)}
                                 className="tracking-wide"
                             >
                                 {link.label}
@@ -176,7 +181,7 @@ const Navbar: React.FC = () => {
                                     whileHover={{ scale: 1.03 }}
                                     whileTap={{ scale: 0.95, opacity: 0.7 }}
                                     href={`#${link.id}`}
-                                    onClick={handleNav}
+                                    onClick={(event) => handleNav(event, link.id)}
                                     className="text-left"
                                 >
                                     {link.label}

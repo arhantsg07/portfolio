@@ -25,7 +25,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(() => {
+              const stored = localStorage.getItem('portfolio-theme');
+              const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+              const isDark = stored ? stored === 'dark' : prefersDark;
+              document.documentElement.classList.toggle('dark', isDark);
+              document.documentElement.classList.toggle('light', !isDark);
+              document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+            })();`,
+          }}
+        />
+      </head>
       <body className={`${cormorant.variable} ${manrope.variable} antialiased`}>
         {children}
       </body>
