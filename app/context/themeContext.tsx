@@ -24,7 +24,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    setIsDark(localStorage.getItem('portfolio-theme') === 'dark');
+    setIsDark(document.documentElement.classList.contains('dark'));
   }, []);
 
   const toggleTheme = () => {
@@ -36,13 +36,12 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   };
 
   useEffect(() => {
-    if (isDark) {
-      document.body.classList.add('dark');
-      document.body.classList.remove('light');
-    } else {
-      document.body.classList.add('light');
-      document.body.classList.remove('dark');
-    }
+    const theme = isDark ? 'dark' : 'light';
+    document.documentElement.classList.toggle('dark', isDark);
+    document.documentElement.classList.toggle('light', !isDark);
+    document.body.classList.toggle('dark', isDark);
+    document.body.classList.toggle('light', !isDark);
+    document.documentElement.style.colorScheme = theme;
   }, [isDark]);
 
   return (

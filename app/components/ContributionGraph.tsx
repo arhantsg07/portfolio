@@ -31,13 +31,14 @@ export default function ContributionGraph() {
 
   return (
     <div className="mt-8 rounded-2xl border border-subtle bg-surface-muted p-4">
-      <div className="mb-3 flex items-center justify-between text-xs uppercase tracking-[0.18em] theme-text-muted">
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-2 text-xs uppercase tracking-[0.18em] theme-text-muted">
         <span>Building in public</span>
         <span>{loading ? "loading..." : `${contrib.total} last year`}</span>
       </div>
 
       <div className="flex flex-col gap-2">
-        <div className="flex gap-2">
+        <div className="max-w-full overflow-x-auto pb-1">
+          <div className="flex w-max min-w-full gap-2">
           <div className="flex flex-col gap-[3px] pt-[1px]">
             {days.map((day, index) => (
               <div key={day} className={`h-3 text-[9px] leading-3 theme-text-muted ${index % 2 === 0 ? "opacity-0" : ""}`}>
@@ -58,6 +59,7 @@ export default function ContributionGraph() {
             ) : (
               <span className="text-xs theme-text-secondary">No data yet</span>
             )}
+          </div>
           </div>
         </div>
 
